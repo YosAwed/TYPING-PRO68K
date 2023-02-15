@@ -51,7 +51,7 @@ def main():
             w = w_data[i-1,j]
             if q != w[t]
                #beep
-               x68k.iocs(x68k.i.SETBEEP)
+               print("\a")
                t = t - 1
                #print( chr$(&H1D), end=")
                print("\033[1D", end=")
