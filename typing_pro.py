@@ -40,7 +40,7 @@ def main():
         print(w_data[i-1][j+1])
         for t in range(len(w_data[i-1][j+1])):
             #q = inkey$(0)
-            q = x68k.iocs(x68k.i.B_KEYSNS)
+            q = x68k.iocs(x68k.i.B_KEYINP)
             print(q, end="")
             if q == "":
                 t = t - 1
