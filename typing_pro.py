@@ -44,14 +44,14 @@ def main():
         while (t < wlen):
             #print("t" + str(t) ,end="")
             #q = inkey$(0)
-            q = x68k.iocs(x68k.i.B_KEYSNS)
-            if q == 0:
-                continue
-            print(q ,end="")
+            q = x68k.iocs(x68k.i.B_KEYINP) & 0xff
+            #if q == 0:
+            #    continue
+            print(chr(q) ,end="")
             #if q != mid$(w_data[i-1][j],t,1)
             w = w_data[i-1][j+1]
             #print(w[t])
-            if q != w[t]:
+            if chr(q) != w[t]:
                 #beep
                 print("\a")
                 #print( chr$(&H1D), end="")
