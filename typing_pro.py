@@ -40,16 +40,16 @@ def main():
     ptime[i] = time.time()
 
     for j in range(10)
-        print w_data[i-1,j]
-        for t in range(len(w_data[i-1,j]))
+        print(w_data[i-1][j])
+        for t in range(len(w_data[i-1][j]))
             #q = inkey$(0)
             q = x68k.iocs(x68k.i.B_KEYSNS)
             print(q, end=")
             if q == "":
                 t = t - 1
                 continue
-            #if q != mid$(w_data[i-1,j],t,1)
-            w = w_data[i-1,j]
+            #if q != mid$(w_data[i-1][j],t,1)
+            w = w_data[i-1][j]
             if q != w[t]
                #beep
                print("\a")
@@ -61,7 +61,7 @@ def main():
 
     ptime[i]= time.time() - ptime[i]
     print("所要時間" + str(ptime[i]) + "秒")
-    print("一文字平均時間" + ptime[i]/int(w_data[i-1,0]) + "秒")
+    print("一文字平均時間" + ptime[i]/int(w_data[i-1][0]) + "秒")
 
     if ptime[i] < htime [i]
         print("新記録でっせ！")
