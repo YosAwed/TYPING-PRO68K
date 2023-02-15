@@ -2,6 +2,7 @@ import x68k
 import machine
 import uctypes
 import time
+from struct import pack
 
 w_data =[
   ["47","ﾎｴﾎｴ","ｺﾝﾆﾁﾊ","ﾝﾀｰ","ｳﾙｳﾙ","ｵﾋｻﾃﾞｽ","ﾎﾟ","ﾋｮﾋｮ","ﾌﾟﾌﾟﾌﾟ","ﾅﾝﾀﾗｶﾀﾗ","ﾊﾟﾓﾊﾟﾓ"],
@@ -14,7 +15,6 @@ ptime =[0,0,0,0]
 
 # main
 def main():
-
   # initialize screen
   x68k.crtmod(12,True)
   x68k.curoff()
@@ -24,7 +24,7 @@ def main():
 
   while True:
 
-    print("　    　　　　　　　　　　　　記録")
+    print("　    　　　　　  　　記録")
     print("１．チャッターコース  " + str(htime[1]) + "秒")
     print("２．動物さん　コース  " + str(htime[2]) + "秒")
     print("３．俳句さん　コース  " + str(htime[3]) + "秒")
@@ -37,42 +37,35 @@ def main():
     ptime[i] = time.time()
 
     for j in range(10):
-        print(w_data[i-1][j])
-        for t in range(len(w_data[i-1][j])):
+        print(w_data[i-1][j+1])
+        for t in range(len(w_data[i-1][j+1])):
             #q = inkey$(0)
             q = x68k.iocs(x68k.i.B_KEYSNS)
-            print(q, end=")
+            print(q, end="")
             if q == "":
                 t = t - 1
                 continue
             #if q != mid$(w_data[i-1][j],t,1)
-            w = w_data[i-1][j]
+            w = w_data[i-1][j+1]
             if q != w[t]:
-               #beep
-               print("\a")
-               t = t - 1
-               #print( chr$(&H1D), end=")
-               print("\033[1D", end=")
-               continue
+                #beep
+                print("\a")
+                t = t - 1
+                #print( chr$(&H1D), end=")
+                print("\033[1D", end="")
+                continue
     print()
 
     ptime[i]= time.time() - ptime[i]
     print("所要時間" + str(ptime[i]) + "秒")
-    print("一文字平均時間" + ptime[i]/int(w_data[i-1][0]) + "秒")
+    print("一文字平均時間" + str(ptime[i]/int(w_data[i-1][0])) + "秒")
 
     if ptime[i] < htime [i]:
         print("新記録でっせ！")
         htime[i]=ptime[i]
 
-
-    # check shift key to exit
-    if x68k.iocs(x68k.i.B_SFTSNS) & 0x01:
-      break
-
   # cursor on
   x68k.curon()
-
-
 
 if __name__ == "__main__":
   main()
