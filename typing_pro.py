@@ -56,6 +56,7 @@ def main():
                 print("\a")
                 #print( chr$(&H1D), end="")
                 print("\033[1D" ,end="")
+                print(chr(0x08), end="")
                 continue
             t = t + 1
     print()
