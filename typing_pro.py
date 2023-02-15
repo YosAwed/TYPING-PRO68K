@@ -53,7 +53,8 @@ def main():
                #beep
                x68k.iocs(x68k.i.SETBEEP)
                t = t - 1
-               print( chr$(&H1D), end=")
+               #print( chr$(&H1D), end=")
+               print("\033[1D", end=")
                continue
     print()
 
