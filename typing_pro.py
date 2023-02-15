@@ -3,7 +3,6 @@ import machine
 import uctypes
 import time
 
-
 w_data =[
   ["47","ﾎｴﾎｴ","ｺﾝﾆﾁﾊ","ﾝﾀｰ","ｳﾙｳﾙ","ｵﾋｻﾃﾞｽ","ﾎﾟ","ﾋｮﾋｮ","ﾌﾟﾌﾟﾌﾟ","ﾅﾝﾀﾗｶﾀﾗ","ﾊﾟﾓﾊﾟﾓ"],
   ["46","ｸﾏ","ｻﾙ","ｸｼﾞﾗ","ｱﾙﾏｼﾞﾛ","ﾅﾏｹﾓﾉ","ﾗｯｺ","ｵﾗﾝｳｰﾀﾝ","ｼﾏﾘｽ","ｴﾘﾏｷﾄｶｹﾞ","ﾗｲﾁｮｳ"],
@@ -16,14 +15,12 @@ ptime =[0,0,0,0]
 # main
 def main():
 
-
   # initialize screen
   x68k.crtmod(12,True)
   x68k.curoff()
   x68k.iocs(x68k.i.TXFILL,a1=pack('6h',0,0,0,1024,1024,0))
   x68k.iocs(x68k.i.TXFILL,a1=pack('6h',1,0,0,1024,1024,0))
   x68k.iocs(x68k.i.BOX,a1=pack('6h',0,0,511,511,0xffff,0xffff))
-
 
   while True:
 
@@ -39,9 +36,9 @@ def main():
 
     ptime[i] = time.time()
 
-    for j in range(10)
+    for j in range(10):
         print(w_data[i-1][j])
-        for t in range(len(w_data[i-1][j]))
+        for t in range(len(w_data[i-1][j])):
             #q = inkey$(0)
             q = x68k.iocs(x68k.i.B_KEYSNS)
             print(q, end=")
@@ -50,7 +47,7 @@ def main():
                 continue
             #if q != mid$(w_data[i-1][j],t,1)
             w = w_data[i-1][j]
-            if q != w[t]
+            if q != w[t]:
                #beep
                print("\a")
                t = t - 1
@@ -63,7 +60,7 @@ def main():
     print("所要時間" + str(ptime[i]) + "秒")
     print("一文字平均時間" + ptime[i]/int(w_data[i-1][0]) + "秒")
 
-    if ptime[i] < htime [i]
+    if ptime[i] < htime [i]:
         print("新記録でっせ！")
         htime[i]=ptime[i]
 
