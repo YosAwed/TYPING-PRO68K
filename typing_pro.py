@@ -47,10 +47,12 @@ def main():
             if q == "":
                 t = t - 1
                 continue
-            if q != mid$(w_data[i-1,j],t,1)
+            #if q != mid$(w_data[i-1,j],t,1)
+            w = w_data[i-1,j]
+            if q != w[t]
                #beep
                x68k.iocs(x68k.i.SETBEEP)
-               t = t-1
+               t = t - 1
                print( chr$(&H1D), end=")
                continue
     print()
