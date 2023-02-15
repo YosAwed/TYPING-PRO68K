@@ -36,24 +36,28 @@ def main():
 
     ptime[i] = time.time()
 
-    for j in range(10):
+   for j in range(10):
         print(w_data[i-1][j+1])
-        for t in range(len(w_data[i-1][j+1])):
+        t = 1
+        wlen = len(w_data[i-1][j+1])
+        #for t in range(len(w_data[i-1][j+1])):
+        while (t < wlen):
+            #print("t" + str(t) ,end="")
             #q = inkey$(0)
-            q = x68k.iocs(x68k.i.B_KEYINP)
-            print(q, end="")
-            if q == "":
-                t = t - 1
+            q = x68k.iocs(x68k.i.B_KEYSNS)
+            if q == 0:
                 continue
+            print(q ,end="")
             #if q != mid$(w_data[i-1][j],t,1)
             w = w_data[i-1][j+1]
+            #print(w[t])
             if q != w[t]:
                 #beep
                 print("\a")
-                t = t - 1
-                #print( chr$(&H1D), end=")
-                print("\033[1D", end="")
+                #print( chr$(&H1D), end="")
+                print("\033[1D" ,end="")
                 continue
+            t = t + 1
     print()
 
     ptime[i]= time.time() - ptime[i]
