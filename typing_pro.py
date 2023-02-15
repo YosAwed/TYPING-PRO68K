@@ -11,6 +11,7 @@ w_data =[
 ]
 
 htime =[0,20,30,30]
+ptime =[0,0,0,0]
 
 # main
 def main():
@@ -33,10 +34,10 @@ def main():
 
     course = input("どのコースでいきますか？(1-3)")
     i = int(course)
-    if i < 1 | i > 3 :
+    if i < 1 or i > 3:
         continue
 
-    time[i] = time.time()
+    ptime[i] = time.time()
 
     for j in range(10)
         print w_data[i-1,j]
@@ -58,13 +59,13 @@ def main():
                continue
     print()
 
-    time[i]= time.time() - time[i]
-    print("所要時間" + str(time[i]) + "秒")
-    print("一文字平均時間" + time[i]/int(w_data[i-1,0]) + "秒")
+    ptime[i]= time.time() - ptime[i]
+    print("所要時間" + str(ptime[i]) + "秒")
+    print("一文字平均時間" + ptime[i]/int(w_data[i-1,0]) + "秒")
 
-    if time[i] < htime [i]
+    if ptime[i] < htime [i]
         print("新記録でっせ！")
-        htime[i]=time[i]
+        htime[i]=ptime[i]
 
 
     # check shift key to exit
