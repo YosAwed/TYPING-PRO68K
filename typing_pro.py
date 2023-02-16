@@ -31,19 +31,20 @@ def main():
     print("３．俳句さん　コース  " + str(htime[3]) + "秒")
     print("４．英語さん　コース  " + str(htime[4]) + "秒")
 
-    course = input("どのコースでいきますか？(1-3)")
+    course = input("どのコースでいきますか？(1-4)")
     i = int(course)
     if i < 1 or i > 4:
         continue
 
     ptime[i] = time.time()
 
-   for j in range(10):
+    for j in range(10):
+        print()
         print(w_data[i-1][j+1])
         t = 1
         wlen = len(w_data[i-1][j+1])
         #for t in range(len(w_data[i-1][j+1])):
-        while (t < wlen):
+        while (t < wlen+1):
             #print("t" + str(t) ,end="")
             #q = inkey$(0)
             q = x68k.iocs(x68k.i.B_KEYINP) & 0xff
@@ -53,13 +54,16 @@ def main():
             #if q != mid$(w_data[i-1][j],t,1)
             w = w_data[i-1][j+1]
             #print(w[t])
-            if chr(q) != w[t]:
-                #beep
-                print("\a")
-                #print( chr$(&H1D), end="")
-                print("\033[1D" ,end="")
-                print(chr(0x08), end="")
-                continue
+            if chr(q) != w[t-1]:
+              #print(w[t])
+              #print(q)
+              #beep
+              print("\a")
+              #print( chr$(&H1D), end="")
+              #print("\033[1D" ,end="")
+              print("\033[2K\033[G")
+              #print(chr(0x1D), end="")
+              continue
             t = t + 1
     print()
 
