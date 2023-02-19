@@ -1,4 +1,3 @@
 # TYPING-PRO68K
-X68000のX-BASIC用プログラムと、MicroPython用のプログラムです。
-どちらも同じもので、X-BASIC版がオリジナル、MicroPython用は、そのコンバートになりますが、MicoPythonは内部コードがUTF-8のため、半角カタカナがうまく処理できません。
-よって雰囲気をわかってもらうために英語入力のコースを追加しました。（そしてこれしか動かない）
+X68000のX-BASIC用プログラムと、yunkya2氏のMicroPython(https://github.com/yunkya2/micropython-x68k)用（Ver0.4以上）のプログラムです。
+どちらも同じもので、X-BASIC版がオリジナル、MicroPython用は、そのコンバートになります。
